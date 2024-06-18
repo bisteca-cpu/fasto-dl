@@ -1,0 +1,10 @@
+"Patch"
+{
+	include "materials\models/player/items/heavy/football_helmet.vmt"
+	
+	insert
+	{
+	"$color2" "{231 181 59}"  
+	"$colortint_base" "{231 181 59}" 
+	}
+}

@@ -1,0 +1,18 @@
+"AddonInfo"
+{
+	AddonSteamAppID  	"243750"									// Game's SteamApp ID. TO-DO: Change later?
+
+	AddonTitle          "New-Old Weapons Pack!"
+	AddonVersion        "2.8.0"										// Mod version. TO-DO: CHANGE FREQUENTLY!!
+	AddonDescription    "A custom weapons pack for TF2C.
+
+Adds dozens of new and old weapons, held to the standards of TF2C's quality!"	// This displays in the addon list, so try to keep this succinct.
+	AddonURL0			"https://gamebanana.com/mods/40389"
+	AddonAuthor         "SilentFox3"
+
+// Content tags
+	Content_Weapon 		"1"											// Depreciated tag. Adds custom weapons
+	addonContent_Weapon "1"											// Adds custom weapon skins
+	addonContent_Sound	"1"											// Adds custom sounds
+	addonContent_Script "1"											// Adds custom scripts
+}

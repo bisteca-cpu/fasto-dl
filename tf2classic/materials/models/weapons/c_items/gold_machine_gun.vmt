@@ -1,0 +1,59 @@
+"SDK_VertexlitGeneric"
+{
+	"$baseTexture" "models/weapons/c_items/gold_machine_gun"		// This is a duplicate of c_smg except with a new alpha!
+	"$bumpmap" "models/effects/flat_normal" 
+
+	"$phong" "1"
+	"$phongexponent" "5500"
+	"$phongboost" "150"
+	"$lightwarptexture" "models/lightwarps/weapon_lightwarp"	
+	"$phongfresnelranges"	"[.25 1 4]"
+	"$basemapalphaphongmask" "1"
+
+	"$envmap" "effects/goldcube"
+	"$envmaptint" "[1.5 1.2 .2]"
+	"$basealphaenvmapmask" 1 
+
+	// Rim lighting parameters
+	"$rimlight" "0"												// To enable rim lighting (requires phong)
+	"$rimlightexponent" "4"										// Exponent for phong component of rim lighting	
+	"$rimlightboost" "2"										// Boost for ambient cube component of rim lighting
+
+	//---------------
+	// Visual Effects
+	//---------------
+	"$glowcolor" 		"1"
+	"$cloakPassEnabled" 	"1"
+	"$yellow" 		"0"
+
+	"Proxies"
+	{
+		"ModelGlowColor"
+		{
+			"resultVar" 	"$glowcolor"
+		}
+		"Equals"
+		{
+			"srcVar1"  	"$glowcolor"
+			"resultVar" 	"$selfillumtint"
+		}
+		"Equals"
+		{
+			"srcVar1"  	"$glowcolor"
+			"resultVar" 	"$color2"
+		}
+		"invis"
+		{
+		}
+		"YellowLevel"
+		{
+			"resultVar" 	"$yellow"
+		}
+		"Multiply"
+		{
+			"srcVar1" 	"$color2"
+			"srcVar2" 	"$yellow"
+			"resultVar" 	"$color2"
+		}
+	}
+}

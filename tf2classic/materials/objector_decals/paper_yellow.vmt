@@ -1,0 +1,19 @@
+"Patch"
+{
+	include "materials\models\weapons\c_items\paper.vmt"
+	
+	insert
+	{
+	"$baseTexture" "objector_decals/decal_yellow" // This is the texture in the same folder as this very .vmt! Change it if you like.
+	"$basemapalphaphongmask" 		"0"   // This just turns "alpha" based shininess off, if your Decal doesn't have an alpha map! Feel free to re-enable it if yours does!
+
+	"Proxies"
+	{
+		"AnimatedTexture"
+		{
+			"animatedtextureframerate" "30"
+		}
+	} // This is for if you want to put an Animated Texture here! Change the framerate as you wish.
+
+	}
+}

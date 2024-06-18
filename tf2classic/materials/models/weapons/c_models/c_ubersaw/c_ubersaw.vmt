@@ -1,0 +1,58 @@
+"SDK_VertexlitGeneric"
+{
+	"$basetexture"	"models/weapons/c_models/c_ubersaw/c_ubersaw"
+	"$basemapalphaphongmask" "1"
+
+	"$phong" "1"
+	"$phongexponent" "25"
+	"$phongboost" "2"	
+	"$lightwarptexture" "models/lightwarps/weapon_lightwarp"
+	"$phongfresnelranges"	"[1.5 .5 3]"
+	"$halflambert" "1"
+
+	"$rimlight" "1"						
+	"$rimlightexponent" "20"				
+	"$rimlightboost" ".25"
+
+	"$selfillum" "1"
+	"$selfillumtint" "[1 .11 .05]"
+	"$selfillummask" "models/weapons/c_models/c_ubersaw/c_ubersaw_selfillummask"
+
+	//---------------
+	// Visual Effects
+	//---------------
+	"$glowcolor" 		"1"
+	"$cloakPassEnabled" 	"1"
+	"$yellow" 		"0"
+
+	"Proxies"
+	{
+		"ModelGlowColor"
+		{
+			"resultVar" 	"$glowcolor"
+		}
+//		"Equals" 			// Commented out since it causes problems with the teamcoloring??
+//		{
+//			"srcVar1"  	"$glowcolor"
+//			"resultVar" 	"$selfillumtint"
+//		}
+		"Equals"
+		{
+			"srcVar1"  	"$glowcolor"
+			"resultVar" 	"$color2"
+		}
+		"invis"
+		{
+		}
+		"YellowLevel"
+		{
+			"resultVar" 	"$yellow"
+		}
+		"Multiply"
+		{
+			"srcVar1" 	"$color2"
+			"srcVar2" 	"$yellow"
+			"resultVar" 	"$color2"
+		}
+	}
+}

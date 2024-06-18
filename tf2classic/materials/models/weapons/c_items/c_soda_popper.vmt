@@ -1,0 +1,91 @@
+"SDK_VertexlitGeneric"
+{
+	"$baseTexture" "models\weapons\c_items\c_soda_popper"
+
+	"$phong" "1"
+	"$phongexponent" "15"
+	"$phongboost" "5"
+	"$lightwarptexture" "models\lightwarps\weapon_lightwarp"
+	"$phongfresnelranges"	"[.25 1.5 20]"
+	"$halflambert" "1"
+
+	"$tempvar" "0"
+
+	"$basephongexponent" "15"
+	"$basephongboost" "5"
+
+	"$basemapalphaphongmask" "1"
+
+	//---------------
+	// Visual Effects
+	//---------------
+	"$cloakPassEnabled" 	"1"
+	"$yellow" 		"0"
+
+// Magic bullshit starts here, from reverse-engineering colors.tf's files (godawful experience btw)
+	"$glowcolor" "[1 1 1]"	// Yes this NEEDS to be set up like this
+
+	"$hypeGlowColor" "[25 5 73]"	// Hand-tweaked to not be eye-bleeding
+	$hypeGlow 0
+
+	"$originalCritGlow" "[0 0 0]"
+	"$originalCritGlow2" .0
+	$zero 0.0
+	$one 1.0
+
+	"Proxies"	// I'm not smart enough to parse this, but basically this here will unconditionally override Crit / minicrit glows with a different color. The original mod has checks for each team and crit-type, but I don't need that!
+	{
+		"ModelGlowColor"
+		{
+			"resultVar" "$originalCritGlow"
+		} 
+		Clamp	// I don't know what this does just roll with it
+		{
+			srcVar1                      $zero
+			min                         "$originalCritGlow[2]"
+			max                         "$originalCritGlow[2]"
+			resultVar                    $originalCritGlow2
+		}
+		LessOrEqual	// If valid in ANY way, then apply the new color. I don't want to wrangle with the proxies needed for all 4 teams' two crit colors. Just the one, for all cases.
+		{
+			lessEqualVar $hypeGlowColor // The color that gets applied!
+			greaterVar $glowcolor	// I think what this does is take glowcolor's current value, compare it against a few things somehow, then shuttle out the result as a new glowcolor value...
+			srcVar1 $hypeGlow
+			srcVar2 $zero
+			resultVar $glowcolor
+		}	
+		LessOrEqual	// If invalid (not critboosted), then set color back to 255 white (no glow)
+		{
+			lessEqualVar $one
+			greaterVar $glowcolor
+			srcVar1 $originalCritGlow2
+			srcVar2 $one
+			resultVar $glowcolor
+		}
+// Magic bullshit ends here
+
+		"Equals"
+		{
+			"srcVar1"  	"$glowcolor"
+			"resultVar" 	"$selfillumtint"
+		}
+		"Equals"
+		{
+			"srcVar1"  	"$glowcolor"
+			"resultVar" 	"$color2"
+		}
+		"invis"
+		{
+		}
+		"YellowLevel"
+		{
+			"resultVar" 	"$yellow"
+		}
+		"Multiply"
+		{
+			"srcVar1" 	"$color2"
+			"srcVar2" 	"$yellow"
+			"resultVar" 	"$color2"
+		}
+	}
+}

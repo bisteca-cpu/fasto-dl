@@ -1,0 +1,10 @@
+"Patch"
+{
+	include "materials/models/workshop/player/items/demo/hw2013_demo_cape/hw2013_demo_cape.vmt"
+	
+	insert
+	{
+	"$colortint_base"		"{ 168 128 30 }"
+	"$color2"				"{ 168 128 30 }"
+	}
+}

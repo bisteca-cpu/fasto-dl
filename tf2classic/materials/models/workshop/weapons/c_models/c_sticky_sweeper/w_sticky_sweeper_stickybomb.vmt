@@ -1,0 +1,54 @@
+"SDK_VertexlitGeneric"
+{
+	"$baseTexture" "models/workshop/weapons/c_models/c_sticky_sweeper/w_sticky_sweeper_stickybomb"
+	"$selfillum" "1"
+	"$nodecal" "1"
+
+	"$phong" "1"
+	"$phongexponent" "5"
+	"$phongboost" ".25"	
+	"$lightwarptexture" "models\lightwarps\weapon_lightwarp"
+	"$phongfresnelranges" "[0.25 0.5 1]"
+
+	//---------------
+	// Visual Effects
+	//---------------
+	"$glowcolor" 		"1"
+	"$cloakPassEnabled" 	"1"
+	"$yellow" 		"0"
+
+	"Proxies"
+	{
+		// "StickybombGlowColor"
+		// {
+			// "resultVar" "$glowcolor"
+		// }
+		"ModelGlowColor"
+		{
+			"resultVar" 	"$glowcolor"
+		}
+		"Equals"
+		{
+			"srcVar1"  	"$glowcolor"
+			"resultVar" 	"$selfillumtint"
+		}
+		"Equals"
+		{
+			"srcVar1"  	"$glowcolor"
+			"resultVar" 	"$color2"
+		}
+		"invis"
+		{
+		}
+		"YellowLevel"
+		{
+			"resultVar" 	"$yellow"
+		}
+		"Multiply"
+		{
+			"srcVar1" 	"$color2"
+			"srcVar2" 	"$yellow"
+			"resultVar" 	"$color2"
+		}
+	}
+}
